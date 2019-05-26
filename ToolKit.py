@@ -20,39 +20,39 @@ def findRPIndex(x,y,length):#where x y the coordinate and length the length of t
 
 def findLeftInstance(x,y,length,pointcode=[]):#input the coordinate and return the left instance (part number) of the point
         if x-1<0:
-                return 0
+                return -1
         else:
-                for i in range(len(pointcode)):
+                for i in range(len(pointcode)/2,len(pointcode)):
                         if x-1==pointcode[i][0] and y==pointcode[i][1]:
                                 return pointcode[i][2]
 
 
 def findRightInstance(x,y,length,pointcode=[]):#input the coordinate and return the left instance (part number) of the point
         if x+1>length:
-                return 0
+                return -1
         else:
-                for i in range(len(pointcode)):
+                for i in range(len(pointcode)/2,len(pointcode)):
                         if x==pointcode[i][0] and y==pointcode[i][1]:
                                 return pointcode[i][2]
 
 
 def findUpInstance(x,y,length,pointcode=[]):#input the coordinate and return the left instance (part number) of the point
         if y+1>length:
-                return 0
+                return -1
         else:
-                for i in range(len(pointcode)):
+                for i in range(len(pointcode)/2):#since the vertical beams is in the range of 0~1/2
                         if x==pointcode[i][0] and y==pointcode[i][1]:
                                 return pointcode[i][2]
 
 
 def findDownInstance(x,y,length,pointcode=[]):#input the coordinate and return the left instance (part number) of the point
         if y-1<0:
-                return 0
+                return -1
         else:
-                for i in range(len(pointcode)):
+                for i in range(len(pointcode)/2):
                         if x==pointcode[i][0] and y-1==pointcode[i][1]:
                                 return pointcode[i][2]
 
-                                
+
 if __name__=='__main__':
     print findRPIndex(0,1,3)
