@@ -5,12 +5,14 @@ import numpy as np
 import main_Property
 import main_Interaction
 import ToolKit
+import main_Mesh
+import main_Load
 def callFunction(Func,looptimes):
     for number in range(looptimes):
         Func(partName[number])
 
         
-length=3
+length=2
 
 
 eleNum=2*length*(length+1)
@@ -73,3 +75,20 @@ for i in range(len(pointcode)):
                 main_Interaction.creatingTie(RPIndex,'Part-'+str(upIns),1,i)
         if downIns>=0:
                 main_Interaction.creatingTie(RPIndex,'Part-'+str(downIns),2,i)
+RPIndex=ToolKit.findRPIndex(length,length,length)
+leftIns=ToolKit.findLeftInstance(length,length,length,pointcode)
+downIns=ToolKit.findDownInstance(length,length,length,pointcode)
+main_Interaction.creatingTie(RPIndex,'Part-'+str(leftIns),2,'last')
+main_Interaction.creatingTie(RPIndex,'Part-'+str(downIns),2,'last')
+#---------------------------------------------------------------------------step process
+mdb.models['Model-1'].StaticStep(name='Step-1', previous='Initial')
+#---------------------------------------------------------------------------Load process
+highestPointRPIndex=ToolKit.findToppestNode(length,pointcode)
+for i in range(len(highestPointRPIndex)):
+        main_Load.setLoad(highestPointRPIndex[i],0.1,i)
+lowestPointRPIndex=ToolKit.findLowestNode(length,pointcode)
+for i in range(len(lowestPointRPIndex)):
+        main_Load.setBoundary(lowestPointRPIndex[i],i)
+#----------------------------------------------------------------------------Mesh Process
+for i in range(len(partName)):
+        main_Mesh.Mesh(partName[i])

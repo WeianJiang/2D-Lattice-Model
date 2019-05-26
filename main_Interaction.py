@@ -10,7 +10,7 @@ def creatingTie(referencePointIndex,instanceName,end,order):#order for set-namin
     a = mdb.models['Model-1'].rootAssembly
     v1 = a.instances[instanceName].vertices
     verts1 = v1.getSequenceFromMask(mask=('[#'+str(end)+']', ), )
-    region2=a.Set(vertices=verts1, name='m_Set-'+instanceName+str(order))
+    region2=a.Set(vertices=verts1, name='s_Set-'+instanceName+str(order))
     mdb.models['Model-1'].Tie(name='Constraint-1'+instanceName+str(order), master=region1, slave=region2, 
         positionToleranceMethod=COMPUTED, adjust=ON, tieRotations=ON, thickness=ON)
 
