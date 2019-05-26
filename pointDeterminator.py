@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def pointDeterminator(pointInfo=[],circleInfo=[]):
+def pointDeterminator(pointInfo=[],circleInfo=[]):#will return circleList that NOT in the circle, [x,y,order]
     pointINcircle=[]
     pointNOTINcircle=[]
     for pointNum in range(len(pointInfo)):
@@ -35,7 +35,7 @@ if __name__=="__main__":
     # circleData = circleGenerator.circleGenerator(1, 3, 5)
     # beamData = BeamGenerator.beamGen(2601)
     beamData=BeamGenerator.beamGen(10)
-    circleData=circleGenerator.circleGenerator(1,3,5)
+    circleData=circleGenerator.circleGenerator(2000,3,5)
     print pointDeterminator(beamData,circleData)
     # for i in range(len(circleData)):  # draw module
     # # "*" used for transfer three parameters in one
