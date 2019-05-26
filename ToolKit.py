@@ -54,5 +54,23 @@ def findDownInstance(x,y,length,pointcode=[]):#input the coordinate and return t
                                 return pointcode[i][2]
 
 
+def findToppestNode(length,pointcode=[]):
+        topPoint=[]
+        for i in range(len(pointcode)/2,len(pointcode)):
+                if pointcode[i][1]==length:
+                        topPoint.append(pointcode[i][2])
+        return topPoint
+
+
+def findLowestNode(length,pointcode=[]):
+        lowPoint=[]
+        for i in range(len(pointcode)/2):
+                if pointcode[i][1]==0:
+                        lowPoint.append(pointcode[i][2])
+        return lowPoint
+
+
+
+
 if __name__=='__main__':
     print findRPIndex(0,1,3)
