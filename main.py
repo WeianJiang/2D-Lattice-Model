@@ -3,6 +3,8 @@ import main_PartAssem
 import NodecodeGenerator
 import numpy as np
 import main_Property
+import main_Interaction
+import ToolKit
 def callFunction(Func,looptimes):
     for number in range(looptimes):
         Func(partName[number])
@@ -23,7 +25,7 @@ for number in range(eleNum):
 
 #---------------------------------------------------------------------------------------------------Part Process
 map(main_PartGen.partGen,partName)
-#--------------------------------------------------------------------------------------------------Propert Process
+#--------------------------------------------------------------------------------------------------Property Process
 elasticMod=[]
 possionRat=[]
 main_Property.profileCreate('profile-1',0.1,0.1)
@@ -32,15 +34,15 @@ for number in range(eleNum):
         possionRat.append(0.2)
         main_Property.materialCreate(partName[number],elasticMod[number],possionRat[number])
         main_Property.sectionCreate(partName[number],'profile-1',partName[number])
-
 map(main_Property.assignBeamDirect,partName)
 map(main_Property.assignSection,partName,partName)
+#-------------------------------------------------------------------------------------------------Assembly Process
 map(main_PartAssem.partInst,partName)
 callFunction(main_PartAssem.partRotate,eleNum/2)#rotate half of the beams
 pointcode = NodecodeGenerator.nodeCodeGen(SideBeamNum)
 for number in range(eleNum):
-    main_PartAssem.partTranslate('Part-'+str(number),pointcode[number][0],pointcode[number][1])
-#----------------------------------------------------------------------------------------------------------------create reference point
+        main_PartAssem.partTranslate('Part-'+str(number),pointcode[number][0],pointcode[number][1])
+#-------------------------------------------------------------------------------------------------create reference point
 RPCoordinate=[]
 for number in range(eleNum/2): 
         main_PartAssem.referencePointCreate(pointcode[number][0],pointcode[number][1])
@@ -53,6 +55,10 @@ i=0
 for number in range(len(RPCoordinate)):#generate referencepoint coordinate and its index
         RPCoordinate[number].append(3*eleNum+1+i)
         i+=1
+#---------------------------------------------------------------------------------------------Interaction Process
 
-print RPCoordinate
-
+for i in range(len(pointcode)):
+        x=pointcode[i][0]
+        y=pointcode[i][1]
+        RPIndex=ToolKit.findRPIndex(x,y,length)
+        main_Interaction.creatingTie(RPIndex,)
