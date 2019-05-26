@@ -7,4 +7,4 @@ Mdb()
 #: The model "Model-1" has been created.
 a = mdb.models['Model-1'].rootAssembly
 session.viewports['Viewport: 1'].setValues(displayedObject=a)
-execfile('F:/AbaqusWorkDrt/MesoBeamModel/CodeFile/main.py', __main__.__dict__)
+execfile('F:/AbaqusWorkDrt/MesoBeamModel/CodeFile/2D-Lattice-Model/main.py', __main__.__dict__)

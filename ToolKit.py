@@ -6,7 +6,7 @@ def findRPIndex(x,y,length):#where x y the coordinate and length the length of t
     nodeNum=length**2
     localRP=[]
     pointcode=NodecodeGenerator.nodeCodeGen(nodeNum)
-    for number in range(len(pointcode)): 
+    for number in range(eleNum/2): 
             localRP.append([pointcode[number][0],pointcode[number][1]])
     for number in range(eleNum/2-length-1,eleNum/2): #generate reference point for the toppest row
             localRP.append([pointcode[number][0],pointcode[number][1]+1])
@@ -73,4 +73,4 @@ def findLowestNode(length,pointcode=[]):
 
 
 if __name__=='__main__':
-    print findRPIndex(0,1,3)
+    print findRPIndex(3,3,3)

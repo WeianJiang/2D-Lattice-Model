@@ -66,10 +66,10 @@ for i in range(len(pointcode)):
         upIns=ToolKit.findUpInstance(x,y,length,pointcode)
         downIns=ToolKit.findDownInstance(x,y,length,pointcode)
         if leftIns>=0:
-                main_Interaction.creatingTie(RPIndex,'Part'+str(leftIns),2,i)
+                main_Interaction.creatingTie(RPIndex,'Part-'+str(leftIns),2,i)
         if rightIns>=0:
-                main_Interaction.creatingTie(RPIndex,'Part'+str(rightIns),1,i)
+                main_Interaction.creatingTie(RPIndex,'Part-'+str(rightIns),1,i)
         if upIns>=0:
-                main_Interaction.creatingTie(RPIndex,'Part'+str(upIns),1,i)
+                main_Interaction.creatingTie(RPIndex,'Part-'+str(upIns),1,i)
         if downIns>=0:
-                main_Interaction.creatingTie(RPIndex,'Part'+str(downIns),2,i)
+                main_Interaction.creatingTie(RPIndex,'Part-'+str(downIns),2,i)
