@@ -103,4 +103,10 @@ for i in range(len(lowestPointRPIndex)):
 for i in range(len(partName)):
         main_Mesh.Mesh(partName[i])
 
-print circleData
+#print circleData
+# a = mdb.models['Model-1'].rootAssembly
+# a.regenerate()
+# a = mdb.models['Model-1'].rootAssembly
+mdb.Job(name='Job-1', model='Model-1', description='')
+mdb.jobs['Job-1'].writeInput(consistencyChecking=OFF)
+print 'success input'
