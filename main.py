@@ -57,16 +57,16 @@ for number in range(eleNum):
 #-------------------------------------------------------------------------------------------------create reference point
 RPCoordinate=[]
 for number in range(eleNum/2): 
-        main_PartAssem.referencePointCreate(pointcode[number][0],pointcode[number][1])
-        RPCoordinate.append([pointcode[number][0],pointcode[number][1]])
+        RPIndex=main_PartAssem.referencePointCreate(pointcode[number][0],pointcode[number][1])
+        RPCoordinate.append([pointcode[number][0],pointcode[number][1]],RPIndex)
 for number in range(eleNum/2-length-1,eleNum/2): #generate reference point for the toppest row
-        main_PartAssem.referencePointCreate(pointcode[number][0],pointcode[number][1]+1)
-        RPCoordinate.append([pointcode[number][0],pointcode[number][1]+1])
+        RPIndex=main_PartAssem.referencePointCreate(pointcode[number][0],pointcode[number][1]+1)
+        RPCoordinate.append([pointcode[number][0],pointcode[number][1]+1],RPIndex)
 
-i=0
-for number in range(len(RPCoordinate)):#generate referencepoint coordinate and its index
-        RPCoordinate[number].append(3*eleNum+1+i)
-        i+=1
+# i=0
+# for number in range(len(RPCoordinate)):#generate referencepoint coordinate and its index
+#         RPCoordinate[number].append(3*eleNum+1+i)
+#         i+=1
 #---------------------------------------------------------------------------------------------Interaction Process
 
 for i in range(len(pointcode)):
