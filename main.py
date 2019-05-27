@@ -73,6 +73,7 @@ for i in range(len(pointcode)):
         x=pointcode[i][0]
         y=pointcode[i][1]
         RPIndex=ToolKit.findRPIndex(x,y,RPCoordinate)
+        print RPIndex
         leftIns=ToolKit.findLeftInstance(x,y,length,pointcode)
         rightIns=ToolKit.findRightInstance(x,y,length,pointcode)
         upIns=ToolKit.findUpInstance(x,y,length,pointcode)

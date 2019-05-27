@@ -1,7 +1,7 @@
 import NodecodeGenerator
 
 
-def findRPIndex(x,y,length,RPCoordinate=[]):#where x y the coordinate and length the length of the model,retrun corresponding index
+def findRPIndex(x,y,RPCoordinate=[]):#where x y the coordinate and length the length of the model,retrun corresponding index
         for number in range(len(RPCoordinate)):
                 if x==RPCoordinate[number][0] and y==RPCoordinate[number][1]:
                         return RPCoordinate[number][2]
