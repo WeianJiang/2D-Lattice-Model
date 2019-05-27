@@ -1,14 +1,14 @@
-import main_PartGen
-import main_PartAssem
-import NodecodeGenerator
+from AbaqusFiles import main_PartGen
+from AbaqusFiles import main_PartAssem
+from AlgorithmFiles import NodecodeGenerator
 import numpy as np
-import main_Property
-import main_Interaction
-import ToolKit
-import main_Mesh
-import main_Load
-import circleGenerator
-import pointDeterminator
+from AbaqusFiles import main_Property
+from AbaqusFiles import main_Interaction
+from AlgorithmFiles import ToolKit
+from AbaqusFiles import main_Mesh
+from AbaqusFiles import main_Load
+from AlgorithmFiles import circleGenerator
+from AlgorithmFiles import pointDeterminator
 from caeModules import *
 def callFunction(Func,looptimes):
     for number in range(looptimes):
