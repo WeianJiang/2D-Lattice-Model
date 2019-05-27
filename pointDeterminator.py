@@ -1,5 +1,5 @@
 import circleGenerator
-import BeamGenerator
+import NodecodeGenerator
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -30,14 +30,14 @@ def positionDeterminator(point_x,point_y,circle_x,circle_y,radi):#retrun False i
 
 
 if __name__=="__main__":
-    # fig = plt.figure(figsize=(6, 6), dpi=100)
-    # plt.axis([0, 50, 0, 50])
-    # circleData = circleGenerator.circleGenerator(1, 3, 5)
+    fig = plt.figure(figsize=(6, 6), dpi=100)
+    plt.axis([0, 50, 0, 50])
+    circleData = circleGenerator.circleGenerator(1, 3, 5)
     # beamData = BeamGenerator.beamGen(2601)
-    beamData=BeamGenerator.beamGen(10)
+    beamData=NodecodeGenerator.nodeCodeGen(10)
     circleData=circleGenerator.circleGenerator(2000,3,5)
     print pointDeterminator(beamData,circleData)
-    # for i in range(len(circleData)):  # draw module
-    # # "*" used for transfer three parameters in one
-    #     circleGenerator.drawCircle(*circleData[i])
-    # plt.show()
+    for i in range(len(circleData)):  # draw module
+    # "*" used for transfer three parameters in one
+        circleGenerator.drawCircle(*circleData[i])
+    plt.show()
