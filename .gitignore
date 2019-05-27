@@ -116,3 +116,5 @@ dmypy.json
 *.pyc
 *.rpy
 *.1
+*.3
+*.inp

@@ -12,12 +12,8 @@ def findRPIndex(x,y,length):#where x y the coordinate and length the length of t
             localRP.append([pointcode[number][0],pointcode[number][1]+1])
     i=0
     for number in range(len(localRP)):#generate referencepoint coordinate and its index
-                if 3*eleNum+1+i==1000:
-                        localRP[number].append(3*eleNum+1+1+i)
-                        i+=1
-                else:
-                        localRP[number].append(3*eleNum+1+i)
-                        i+=1
+                localRP[number].append(3*eleNum+2+i)
+                i+=1
     for number in range(len(localRP)):
         if x==localRP[number][0] and y==localRP[number][1]:
             return localRP[number][2]
