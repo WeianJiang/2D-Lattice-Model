@@ -68,12 +68,11 @@ for number in range(eleNum/2-length-1,eleNum/2): #generate reference point for t
 #         RPCoordinate[number].append(3*eleNum+1+i)
 #         i+=1
 #---------------------------------------------------------------------------------------------Interaction Process
-
+print RPCoordinate
 for i in range(len(pointcode)):
         x=pointcode[i][0]
         y=pointcode[i][1]
         RPIndex=ToolKit.findRPIndex(x,y,RPCoordinate)
-        print RPIndex
         leftIns=ToolKit.findLeftInstance(x,y,length,pointcode)
         rightIns=ToolKit.findRightInstance(x,y,length,pointcode)
         upIns=ToolKit.findUpInstance(x,y,length,pointcode)
@@ -86,7 +85,7 @@ for i in range(len(pointcode)):
                 main_Interaction.creatingTie(RPIndex,'Part-'+str(upIns),1,i)
         if downIns>=0:
                 main_Interaction.creatingTie(RPIndex,'Part-'+str(downIns),2,i)
-RPIndex=ToolKit.findRPIndex(length,length,length)
+RPIndex=ToolKit.findRPIndex(length,length,RPCoordinate)
 leftIns=ToolKit.findLeftInstance(length,length,length,pointcode)
 downIns=ToolKit.findDownInstance(length,length,length,pointcode)
 main_Interaction.creatingTie(RPIndex,'Part-'+str(leftIns),2,'last')
@@ -94,10 +93,10 @@ main_Interaction.creatingTie(RPIndex,'Part-'+str(downIns),2,'last')
 #---------------------------------------------------------------------------step process
 mdb.models['Model-1'].StaticStep(name='Step-1', previous='Initial')
 #---------------------------------------------------------------------------Load process
-highestPointRPIndex=ToolKit.findToppestNode(length,pointcode)
+highestPointRPIndex=ToolKit.findToppestNode(length,pointcode,RPCoordinate)
 for i in range(len(highestPointRPIndex)):
         main_Load.setLoad(highestPointRPIndex[i],0.1,i)
-lowestPointRPIndex=ToolKit.findLowestNode(length,pointcode)
+lowestPointRPIndex=ToolKit.findLowestNode(length,pointcode,RPCoordinate)
 for i in range(len(lowestPointRPIndex)):
         main_Load.setBoundary(lowestPointRPIndex[i],i)
 #----------------------------------------------------------------------------Mesh Process
