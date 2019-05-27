@@ -1,20 +1,10 @@
 import NodecodeGenerator
 
 
-def findRPIndex(x,y,length):#where x y the coordinate and length the length of the model,retrun corresponding index
-    eleNum=2*length*(length+1)
-    nodeNum=length**2
-    localRP=[]
-    pointcode=NodecodeGenerator.nodeCodeGen(nodeNum)
-    for number in range(eleNum/2): 
-            localRP.append([pointcode[number][0],pointcode[number][1]])
-    for number in range(eleNum/2-length-1,eleNum/2): #generate reference point for the toppest row
-            localRP.append([pointcode[number][0],pointcode[number][1]+1])
-    for number in range(len(localRP)):#generate referencepoint coordinate and its index
-                localRP[number].append(number+1)
-    for number in range(len(localRP)):
-        if x==localRP[number][0] and y==localRP[number][1]:
-            return localRP[number][2]
+def findRPIndex(x,y,length,RPCoordinate=[]):#where x y the coordinate and length the length of the model,retrun corresponding index
+        for number in range(len(RPCoordinate)):
+                if x==RPCoordinate[number][0] and y==RPCoordinate[number][1]:
+                        return RPCoordinate[number][2]
 
 def findLeftInstance(x,y,length,pointcode=[]):#input the coordinate and return the left instance (part number) of the point
         if x-1<0:
