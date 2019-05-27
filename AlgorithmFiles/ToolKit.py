@@ -10,10 +10,8 @@ def findRPIndex(x,y,length):#where x y the coordinate and length the length of t
             localRP.append([pointcode[number][0],pointcode[number][1]])
     for number in range(eleNum/2-length-1,eleNum/2): #generate reference point for the toppest row
             localRP.append([pointcode[number][0],pointcode[number][1]+1])
-    i=0
     for number in range(len(localRP)):#generate referencepoint coordinate and its index
-                localRP[number].append(3*eleNum+2+i)
-                i+=1
+                localRP[number].append(number+1)
     for number in range(len(localRP)):
         if x==localRP[number][0] and y==localRP[number][1]:
             return localRP[number][2]
