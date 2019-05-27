@@ -15,7 +15,7 @@ def callFunction(Func,looptimes):
         Func(partName[number])
 
         
-length=5
+length=15
 
 
 eleNum=2*length*(length+1)

@@ -1,7 +1,7 @@
 import numpy as np
 
 
-size=5
+size=15
 
 def drawCircle(centroid_x, centroid_y, radi,order):  # draw circles by given parameters, in which order is useless
     theta = np.arange(0, 2*np.pi, 0.01)
