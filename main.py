@@ -72,7 +72,7 @@ for number in range(eleNum/2-length-1,eleNum/2): #generate reference point for t
 for i in range(len(pointcode)):
         x=pointcode[i][0]
         y=pointcode[i][1]
-        RPIndex=ToolKit.findRPIndex(x,y,length)
+        RPIndex=ToolKit.findRPIndex(x,y,RPCoordinate)
         leftIns=ToolKit.findLeftInstance(x,y,length,pointcode)
         rightIns=ToolKit.findRightInstance(x,y,length,pointcode)
         upIns=ToolKit.findUpInstance(x,y,length,pointcode)
