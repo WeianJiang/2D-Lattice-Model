@@ -1,7 +1,7 @@
 import circleGenerator
 import NodecodeGenerator
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 
 def pointDeterminator(pointInfo=[],circleInfo=[]):#will return circleList that NOT in the circle, [x,y,order]
@@ -29,15 +29,15 @@ def positionDeterminator(point_x,point_y,circle_x,circle_y,radi):#retrun False i
         return False
 
 
-if __name__=="__main__":
-    fig = plt.figure(figsize=(6, 6), dpi=100)
-    plt.axis([0, 50, 0, 50])
-    circleData = circleGenerator.circleGenerator(1, 3, 5)
-    # beamData = BeamGenerator.beamGen(2601)
-    beamData=NodecodeGenerator.nodeCodeGen(10)
-    circleData=circleGenerator.circleGenerator(2000,3,5)
-    print pointDeterminator(beamData,circleData)
-    for i in range(len(circleData)):  # draw module
-    # "*" used for transfer three parameters in one
-        circleGenerator.drawCircle(*circleData[i])
-    plt.show()
+# if __name__=="__main__":
+#     fig = plt.figure(figsize=(6, 6), dpi=100)
+#     plt.axis([0, 50, 0, 50])
+#     circleData = circleGenerator.circleGenerator(1, 3, 5)
+#     # beamData = BeamGenerator.beamGen(2601)
+#     beamData=NodecodeGenerator.nodeCodeGen(50)
+#     circleData=circleGenerator.circleGenerator(2000,3,5)
+#     print pointDeterminator(beamData,circleData)
+#     for i in range(len(circleData)):  # draw module
+#     # "*" used for transfer three parameters in one
+#         circleGenerator.drawCircle(circleData[i][0],circleData[i][1],circleData[i][2],circleData[i][3])
+#     plt.show()

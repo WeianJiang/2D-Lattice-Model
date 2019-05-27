@@ -7,19 +7,22 @@ import main_Interaction
 import ToolKit
 import main_Mesh
 import main_Load
+import circleGenerator
+import pointDeterminator
+from caeModules import *
 def callFunction(Func,looptimes):
     for number in range(looptimes):
         Func(partName[number])
 
         
-length=2
+length=6
 
 
 eleNum=2*length*(length+1)
 SideBeamNum=length**2
 nodeNum=(length+1)**2
 
-
+pointcode = NodecodeGenerator.nodeCodeGen(SideBeamNum) #generating the basic coordinate
 partName=[]
 for number in range(eleNum):
     partName.append('Part-'+str(number))#naming 'part' objects
@@ -34,6 +37,14 @@ main_Property.profileCreate('profile-1',0.1,0.1)
 for number in range(eleNum):
         elasticMod.append(48000)
         possionRat.append(0.2)
+circleData=circleGenerator.circleGenerator(200,1,1)
+pointNOTIncircle=pointDeterminator.pointDeterminator(pointcode,circleData)
+for number in range(eleNum):
+        for numberofpointNOtinCircle in range(len(pointNOTIncircle)):#giving different para to the element
+                if number==pointNOTIncircle[numberofpointNOtinCircle][2]:
+                        elasticMod[number]=10000
+                        possionRat[number]=0.3
+for number in range(eleNum):
         main_Property.materialCreate(partName[number],elasticMod[number],possionRat[number])
         main_Property.sectionCreate(partName[number],'profile-1',partName[number])
 map(main_Property.assignBeamDirect,partName)
@@ -41,7 +52,6 @@ map(main_Property.assignSection,partName,partName)
 #-------------------------------------------------------------------------------------------------Assembly Process
 map(main_PartAssem.partInst,partName)
 callFunction(main_PartAssem.partRotate,eleNum/2)#rotate half of the beams
-pointcode = NodecodeGenerator.nodeCodeGen(SideBeamNum)
 for number in range(eleNum):
         main_PartAssem.partTranslate('Part-'+str(number),pointcode[number][0],pointcode[number][1])
 #-------------------------------------------------------------------------------------------------create reference point
@@ -92,3 +102,5 @@ for i in range(len(lowestPointRPIndex)):
 #----------------------------------------------------------------------------Mesh Process
 for i in range(len(partName)):
         main_Mesh.Mesh(partName[i])
+
+print circleData

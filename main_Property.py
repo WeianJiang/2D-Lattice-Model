@@ -3,7 +3,7 @@ from abaqusConstants import *
 
 def materialCreate(materialName,elaticModules,possionRatio):
     mdb.models['Model-1'].Material(name=materialName)
-    mdb.models['Model-1'].materials[materialName].Elastic(table=((int(elaticModules), int(possionRatio)), ))
+    mdb.models['Model-1'].materials[materialName].Elastic(table=((float(elaticModules), float(possionRatio)), ))
 
 
 def profileCreate(profileName,length,height):

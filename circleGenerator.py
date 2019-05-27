@@ -1,6 +1,8 @@
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import numpy as np
 
+
+size=5
 
 def drawCircle(centroid_x, centroid_y, radi,order):  # draw circles by given parameters, in which order is useless
     theta = np.arange(0, 2*np.pi, 0.01)
@@ -10,7 +12,7 @@ def drawCircle(centroid_x, centroid_y, radi,order):  # draw circles by given par
 
 
 def boudaryDetect(x, y, r):  # Funtion used to detect whether the circle cross the boundry
-    if x-r > 0 and y-r > 0 and x+r < 50 and y+r < 50:
+    if x-r > 0 and y-r > 0 and x+r < size and y+r < size:
         return True
 
 
@@ -22,8 +24,8 @@ def overlapDetect(x1, y1, r1, x2, y2, r2):
 
 
 def dataGen(minimumRadi,maximumRadi):  # generate parameters of circle
-    centroid_x = np.random.rand()*50
-    centroid_y = np.random.rand()*50
+    centroid_x = np.random.rand()*size
+    centroid_y = np.random.rand()*size
     radi = np.random.random_integers(minimumRadi, maximumRadi)+np.random.rand()
     if boudaryDetect(centroid_x, centroid_y, radi):
         return [centroid_x, centroid_y, radi]
@@ -67,22 +69,21 @@ def circleGenerator(trialTimes,minimumRadi,maximumRadi,circleData=[]):
     return circleData
 
 
-if __name__ == "__main__":
-    fig = plt.figure(figsize=(6, 6), dpi=100)
-    plt.axis([0, 50, 0, 50])
-    #print dataGen()
-    circleData = circleGenerator(2000,3,4)
-    circleData = circleGenerator(20000,1,2,circleData)
-    circleData = np.array(circleData)
-    with open('file.txt','w') as f:
-        f.write(str(circleData))
-    print circleData
-    print len(circleData)
-    #print overlapCounting(circleData)
-    print areaRatio(circleData)
-    for i in range(len(circleData)):  # draw module
-        # "*" used for transfer three parameters in one
-        drawCircle(*circleData[i])
-    plt.show()
+# if __name__ == "__main__":
+    # fig = plt.figure(figsize=(6, 6), dpi=100)
+    # plt.axis([0, size, 0, size])
+    # #print dataGen()
+    # circleData = circleGenerator(20,1,1)
+    # circleData = np.array(circleData)
+    # # with open('file.txt','w') as f:
+    # #     f.write(str(circleData))
+    # print circleData
+    # print len(circleData)
+    # #print overlapCounting(circleData)
+    # print areaRatio(circleData)
+    # for i in range(len(circleData)):  # draw module
+    #     # "*" used for transfer three parameters in one
+    #     drawCircle(*circleData[i])
+    # plt.show()
 
 # plt.savefig("D:/tcount
