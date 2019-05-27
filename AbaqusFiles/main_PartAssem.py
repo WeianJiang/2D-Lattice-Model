@@ -24,4 +24,5 @@ def partTranslate(InstanceName,target_x,target_y):
 
 def referencePointCreate(cordin_x,cordin_y):
     a = mdb.models['Model-1'].rootAssembly
-    a.ReferencePoint(point=(cordin_x, cordin_y, 0.0))
+    RPIndex=a.ReferencePoint(point=(cordin_x, cordin_y, 0.0))
+    return RPIndex.id
