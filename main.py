@@ -17,7 +17,7 @@ def callFunction(Func,looptimes):
         
 circleData=np.loadtxt('Circle.txt')
 
-length=20
+length=9
 
 
 eleNum=2*length*(length+1)

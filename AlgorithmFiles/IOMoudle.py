@@ -27,7 +27,7 @@ import circleGenerator
 
 if __name__ == "__main__":
         import matplotlib.pyplot as plt
-        size=20
+        size=10
         fig = plt.figure(figsize=(6, 6), dpi=100)
         plt.axis([0, size, 0, size])
         circleData=np.loadtxt('Circle.txt')
