@@ -1,9 +1,9 @@
 import numpy as np
+import IOMoudle as io
 
+size=10
 
-size=15
-
-def drawCircle(centroid_x, centroid_y, radi,order):  # draw circles by given parameters, in which order is useless
+def drawCircle(centroid_x, centroid_y, radi):  # draw circles by given parameters, in which order is useless
     theta = np.arange(0, 2*np.pi, 0.01)
     x = centroid_x + radi * np.cos(theta)
     y = centroid_y + radi * np.sin(theta)
@@ -68,22 +68,30 @@ def circleGenerator(trialTimes,minimumRadi,maximumRadi,circleData=[]):
     return circleData
 
 
+
+
+
+
+
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
     fig = plt.figure(figsize=(6, 6), dpi=100)
     plt.axis([0, size, 0, size])
     #print dataGen()
-    circleData = circleGenerator(20,1,1)
-    circleData = np.array(circleData)
+    circleData=circleGenerator(20,1,1)
+    circleData=np.array(circleData)
+    np.savetxt('Circle.txt',circleData)
+
+    circleData=np.loadtxt('Circle.txt')
     # with open('file.txt','w') as f:
     #     f.write(str(circleData))
     print circleData
     print len(circleData)
     #print overlapCounting(circleData)
-    print areaRatio(circleData)
+    #print areaRatio(circleData)
     for i in range(len(circleData)):  # draw module
         # "*" used for transfer three parameters in one
-        drawCircle(*circleData[i])
+        drawCircle(circleData[i][0],circleData[i][1],circleData[i][2])
     plt.show()
 
 # plt.savefig("D:/tcount

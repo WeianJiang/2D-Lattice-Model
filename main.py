@@ -7,15 +7,17 @@ from AbaqusFiles import main_Interaction
 from AlgorithmFiles import ToolKit
 from AbaqusFiles import main_Mesh
 from AbaqusFiles import main_Load
-from AlgorithmFiles import circleGenerator
 from AlgorithmFiles import pointDeterminator
-
+from AlgorithmFiles import IOMoudle
+from caeModules import *
 def callFunction(Func,looptimes):
     for number in range(looptimes):
         Func(partName[number])
 
         
-length=15
+circleData=np.loadtxt('Circle.txt')
+
+length=10
 
 
 eleNum=2*length*(length+1)
@@ -37,7 +39,7 @@ main_Property.profileCreate('profile-1',0.1,0.1)
 for number in range(eleNum):
         elasticMod.append(48000)
         possionRat.append(0.2)
-circleData=circleGenerator.circleGenerator(200,1,1)
+
 pointNOTIncircle=pointDeterminator.pointDeterminator(pointcode,circleData)
 for number in range(eleNum):
         for numberofpointNOtinCircle in range(len(pointNOTIncircle)):#giving different para to the element
