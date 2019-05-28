@@ -9,7 +9,7 @@ from AbaqusFiles import main_Mesh
 from AbaqusFiles import main_Load
 from AlgorithmFiles import circleGenerator
 from AlgorithmFiles import pointDeterminator
-from caeModules import *
+
 def callFunction(Func,looptimes):
     for number in range(looptimes):
         Func(partName[number])
