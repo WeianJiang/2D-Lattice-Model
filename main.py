@@ -37,15 +37,15 @@ elasticMod=[]
 possionRat=[]
 main_Property.profileCreate('profile-1',0.1,0.1)
 for number in range(eleNum):
-        elasticMod.append(48000)
+        elasticMod.append(60000)
         possionRat.append(0.2)
 
 pointNOTIncircle=pointDeterminator.pointDeterminator(pointcode,circleData)
 for number in range(eleNum):
         for numberofpointNOtinCircle in range(len(pointNOTIncircle)):#giving different para to the element
                 if number==pointNOTIncircle[numberofpointNOtinCircle][2]:
-                        elasticMod[number]=10000
-                        possionRat[number]=0.3
+                        elasticMod[number]=21000
+                        possionRat[number]=0.2
 for number in range(eleNum):
         main_Property.materialCreate(partName[number],elasticMod[number],possionRat[number])
         main_Property.sectionCreate(partName[number],'profile-1',partName[number])

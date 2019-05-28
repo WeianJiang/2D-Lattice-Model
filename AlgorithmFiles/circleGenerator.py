@@ -4,6 +4,7 @@ import IOMoudle as io
 size=10
 
 def drawCircle(centroid_x, centroid_y, radi):  # draw circles by given parameters, in which order is useless
+    import matplotlib.pyplot as plt
     theta = np.arange(0, 2*np.pi, 0.01)
     x = centroid_x + radi * np.cos(theta)
     y = centroid_y + radi * np.sin(theta)
@@ -25,7 +26,7 @@ def overlapDetect(x1, y1, r1, x2, y2, r2):
 def dataGen(minimumRadi,maximumRadi):  # generate parameters of circle
     centroid_x = np.random.rand()*size
     centroid_y = np.random.rand()*size
-    radi = np.random.random_integers(minimumRadi, maximumRadi)+np.random.rand()
+    radi = np.random.uniform(minimumRadi, maximumRadi)
     if boudaryDetect(centroid_x, centroid_y, radi):
         return [centroid_x, centroid_y, radi]
     else:
@@ -54,6 +55,9 @@ def overlapCounting(circleArray):
 def circleGenerator(trialTimes,minimumRadi,maximumRadi,circleData=[]):
     if len(circleData)==0:
         circleData.append(dataGen(minimumRadi,maximumRadi))
+        formerLength=0
+    else:
+        formerLength=len(circleData)
     for number in range(trialTimes):
         newCircle = dataGen(minimumRadi,maximumRadi)
         looptimes = 0
@@ -63,7 +67,7 @@ def circleGenerator(trialTimes,minimumRadi,maximumRadi,circleData=[]):
             looptimes += 1
         if looptimes == len(circleData):
             circleData.append(newCircle)
-    for order in range(len(circleData)):
+    for order in range(formerLength,len(circleData)):
         circleData[order].append(order)
     return circleData
 
@@ -78,15 +82,15 @@ if __name__ == "__main__":
     fig = plt.figure(figsize=(6, 6), dpi=100)
     plt.axis([0, size, 0, size])
     #print dataGen()
-    circleData=circleGenerator(20,1,1)
+    circleData=circleGenerator(200,1,2)
+    circleData=circleGenerator(200,0.5,1,circleData)
     circleData=np.array(circleData)
     np.savetxt('Circle.txt',circleData)
 
     circleData=np.loadtxt('Circle.txt')
     # with open('file.txt','w') as f:
     #     f.write(str(circleData))
-    print circleData
-    print len(circleData)
+
     #print overlapCounting(circleData)
     #print areaRatio(circleData)
     for i in range(len(circleData)):  # draw module
