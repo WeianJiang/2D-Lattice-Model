@@ -120,3 +120,4 @@ dmypy.json
 *.inp
 *.2
 *.rec
+.DS_Store
