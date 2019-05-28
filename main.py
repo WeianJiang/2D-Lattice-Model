@@ -17,7 +17,7 @@ def callFunction(Func,looptimes):
         
 circleData=np.loadtxt('Circle.txt')
 
-length=9
+length=5
 
 
 eleNum=2*length*(length+1)
@@ -70,7 +70,7 @@ for number in range(eleNum/2-length-1,eleNum/2): #generate reference point for t
 #         RPCoordinate[number].append(3*eleNum+1+i)
 #         i+=1
 #---------------------------------------------------------------------------------------------Interaction Process
-print RPCoordinate
+
 for i in range(len(pointcode)):
         x=pointcode[i][0]
         y=pointcode[i][1]
@@ -112,3 +112,6 @@ for i in range(len(partName)):
 mdb.Job(name='Job-1', model='Model-1', description='')
 mdb.jobs['Job-1'].writeInput(consistencyChecking=OFF)
 print 'success input'
+
+mdb.saveAs(
+    pathName='F:/AbaqusWorkDrt/MesoBeamModel/CodeFile/2D-Lattice-Model/test')

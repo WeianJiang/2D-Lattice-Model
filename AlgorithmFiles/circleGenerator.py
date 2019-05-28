@@ -1,7 +1,7 @@
 import numpy as np
 import IOMoudle as io
 
-size=9
+size=5
 
 def drawCircle(centroid_x, centroid_y, radi):  # draw circles by given parameters, in which order is useless
     import matplotlib.pyplot as plt
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     fig = plt.figure(figsize=(6, 6), dpi=100)
     plt.axis([0, size, 0, size])
     #print dataGen()
-    circleData=circleGenerator(200,1,2)
+    circleData=circleGenerator(2000,1,2)
     #circleData=circleGenerator(200,0.5,1,circleData)
     circleData=np.array(circleData)
     np.savetxt('Circle.txt',circleData)
