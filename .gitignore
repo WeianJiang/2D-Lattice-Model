@@ -142,3 +142,6 @@ dmypy.json
 *.dat
 *.com
 *.png
+*.5
+*.cae
+*.jnl
