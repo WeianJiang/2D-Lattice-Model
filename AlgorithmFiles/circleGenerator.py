@@ -1,7 +1,7 @@
 import numpy as np
 import IOMoudle as io
 
-size=10
+size=150
 
 def drawCircle(centroid_x, centroid_y, radi):  # draw circles by given parameters, in which order is useless
     theta = np.arange(0, 2*np.pi, 0.01)
@@ -36,7 +36,7 @@ def areaRatio(circleArray):
     area=0
     for i in range(len(circleArray)):
         area = 3.14*circleArray[i][2]**2 + area
-    return area/2500
+    return area/150/150
 
 
 def overlapCounting(circleArray):
@@ -78,17 +78,18 @@ if __name__ == "__main__":
     fig = plt.figure(figsize=(6, 6), dpi=100)
     plt.axis([0, size, 0, size])
     #print dataGen()
-    circleData=circleGenerator(20,1,1)
+    circleData=circleGenerator(200,5,10)
+    circleData=circleGenerator(200,2,5)
     circleData=np.array(circleData)
-    np.savetxt('Circle.txt',circleData)
+    # np.savetxt('Circle.txt',circleData)
 
-    circleData=np.loadtxt('Circle.txt')
+    # circleData=np.loadtxt('Circle.txt')
     # with open('file.txt','w') as f:
     #     f.write(str(circleData))
-    print circleData
+    # print circleData
     print len(circleData)
     #print overlapCounting(circleData)
-    #print areaRatio(circleData)
+    print areaRatio(circleData)
     for i in range(len(circleData)):  # draw module
         # "*" used for transfer three parameters in one
         drawCircle(circleData[i][0],circleData[i][1],circleData[i][2])
