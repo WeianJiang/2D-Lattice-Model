@@ -17,7 +17,7 @@ def callFunction(Func,looptimes):
         
 circleData=np.loadtxt('Circle.txt')
 
-length=9
+length=11
 
 
 eleNum=2*length*(length+1)
@@ -70,7 +70,7 @@ for number in range(eleNum/2-length-1,eleNum/2): #generate reference point for t
 #         RPCoordinate[number].append(3*eleNum+1+i)
 #         i+=1
 #---------------------------------------------------------------------------------------------Interaction Process
-print RPCoordinate
+
 for i in range(len(pointcode)):
         x=pointcode[i][0]
         y=pointcode[i][1]
@@ -97,7 +97,7 @@ mdb.models['Model-1'].StaticStep(name='Step-1', previous='Initial')
 #---------------------------------------------------------------------------Load process
 highestPointRPIndex=ToolKit.findToppestNode(length,pointcode,RPCoordinate)
 for i in range(len(highestPointRPIndex)):
-        main_Load.setLoad(highestPointRPIndex[i],0.1,i)
+        main_Load.setLoad(highestPointRPIndex[i],10,i)
 lowestPointRPIndex=ToolKit.findLowestNode(length,pointcode,RPCoordinate)
 for i in range(len(lowestPointRPIndex)):
         main_Load.setBoundary(lowestPointRPIndex[i],i)
@@ -111,4 +111,4 @@ for i in range(len(partName)):
 # a = mdb.models['Model-1'].rootAssembly
 mdb.Job(name='Job-1', model='Model-1', description='')
 mdb.jobs['Job-1'].writeInput(consistencyChecking=OFF)
-print 'success input'
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)

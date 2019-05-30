@@ -27,7 +27,7 @@ import circleGenerator
 
 if __name__ == "__main__":
         import matplotlib.pyplot as plt
-        size=10
+        size=150
         fig = plt.figure(figsize=(6, 6), dpi=100)
         plt.axis([0, size, 0, size])
         circleData=np.loadtxt('Circle.txt')
@@ -35,7 +35,7 @@ if __name__ == "__main__":
         # with open('file.txt','w') as f:
         #     f.write(str(circleData))
         #print overlapCounting(circleData)
-        #print areaRatio(circleData)
+        print circleGenerator.areaRatio(circleData)
         for i in range(len(circleData)):  # draw module
         # "*" used for transfer three parameters in one
                 circleGenerator.drawCircle(circleData[i][0],circleData[i][1],circleData[i][2])

@@ -1,7 +1,7 @@
 import numpy as np
 import IOMoudle as io
 
-size=9
+size=11
 
 def drawCircle(centroid_x, centroid_y, radi):  # draw circles by given parameters, in which order is useless
     import matplotlib.pyplot as plt
@@ -37,7 +37,7 @@ def areaRatio(circleArray):
     area=0
     for i in range(len(circleArray)):
         area = 3.14*circleArray[i][2]**2 + area
-    return area/2500
+    return area/150/150
 
 
 def overlapCounting(circleArray):
@@ -83,7 +83,7 @@ if __name__ == "__main__":
     plt.axis([0, size, 0, size])
     #print dataGen()
     circleData=circleGenerator(200,1,2)
-    #circleData=circleGenerator(200,0.5,1,circleData)
+    #circleData=circleGenerator(200,1,2,circleData)
     circleData=np.array(circleData)
     np.savetxt('Circle.txt',circleData)
 
